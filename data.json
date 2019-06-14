@@ -13,5 +13,6 @@
     "ajax":"http://note.youdao.com/noteshare?id=61005584bc3ef468b06246c6bd58daae&sub=67731AAB917646C5859E117C4B27EA03",
     "template":"https://www.cnblogs.com/shiyou00/p/6841801.html",
     "bootstrap":"https://v3.bootcss.com/",
-    "less":"http://www.bootcss.com/p/lesscss/"
+    "less":"http://www.bootcss.com/p/lesscss/",
+    "vue":"https://cn.vuejs.org/"
 }
