@@ -1,0 +1,52 @@
+/*设置导航颜色*/
+#fp-nav ul li a span, .fp-slidesNav ul li a span{
+	background-color: red;
+}
+.enter{
+	position: fixed;
+	top:10%;
+	right:5%;
+	z-index: 9999;
+	cursor: pointer;
+}
+.next{
+	position: fixed;
+	bottom: 10%;
+	right: 5%;
+	z-index: 9999;
+	animation: nexta .5s infinite;
+	cursor: pointer;
+}
+@keyframes nexta{
+	0%{bottom: 10%;}
+	50%{bottom: 15%;}
+	100%{bottom: 10%;}
+}
+/*第一屏开始*/
+.section1{
+	background-color: rgb(202, 221, 238);
+}
+.spritBox1{
+	width:60%;
+	height: 90%;
+	position: absolute;
+	bottom:0;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.spritBox1 h1{
+	text-align: center;
+}
+.spritBox{
+	width:70%;
+	height: 100%;
+	position: absolute;
+	bottom:0;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.spritBox h1{
+	text-align: center;
+}
+/*第一屏结束*/
+

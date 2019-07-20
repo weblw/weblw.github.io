@@ -1,178 +1,263 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>
-      web前端工程师个人简历
-    </title>
-    <meta content="赵柯宇的web前端工程师个人简历，前端学习，前端开发" name="description" />
-    <meta content="web前端，FE，web前端个人简历，前端开发" name="keywords" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="fragment" content="!" />
-    <meta http-equiv="cache-control" content="no-cache" />
-    <meta http-equiv="expires" content="0" />
-    <meta http-equiv="pragma" content="no-cache" />
-    <script>
-      (function() {
-        function autoRootFontSize() {
-          const width = Math.min(screen.width, document.documentElement.getBoundingClientRect().width);
-          document.documentElement.style.fontSize = width > 600 ? '16px' : (width / 750) * 32 + 'px';
-        }
-        window.addEventListener('resize', autoRootFontSize);
-        autoRootFontSize();
-      })();
-    </script>
-  <link rel="shortcut icon" href="favicon.ico"><style>/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}[hidden],template{display:none}</style><link href="css/main.ba4a7bea.css" rel="stylesheet"><link rel="preload" href="js/vendors.614a7afb.js" as="script"/><link rel="preload" href="js/main.fa9e047b.js" as="script"/></head>
 
-  <body id="app" style="display: none">
-    <!-- header -->
-    <header class="header">
-      <div class="title-c">
-        <div class="title" v-class="isShowNav?'-rotate':''" v-text="header.titleList[pageIndex].title" v-on:click="titleHandler($event,pageIndex)"></div>
-        <div class="title-pc" v-text="header.titleList[pageIndex].title" v-show="pageIndex !== 0 && isPc"></div>
-      </div>
-      <div class="language">
-        <div class="-c" v-class="selectedLang==1?'-selectEn':''">
-          <span class="-item" v-class="selectedLang == $index?'-selected':''" v-for="item in header.langList" v-text="item" v-on:click="switchLang($index)"></span>
-        </div>
-      </div>
-      <div class="nav" v-class="isShowNav?'show-nav':''">
-        <ul class="-list">
-          <li v-class="pageIndex === $index?'-cur-index':''" v-for="item in header.titleList">
-            <span v-text="item.title" v-on:click="directToPage($index)"></span>
-          </li>
-        </ul>
-      </div>
-      <div class="nav-dot">
-        <ul>
-          <li v-class="pageIndex == $index?'-cur-index':''" class="nav-dot-item" v-for="item in header.titleList">
-            <em v-on:click="directToPage($index)">
-              <img v-src="item.svg" alt="" />
-            </em>
-            <span class="-title" v-text="item.title"></span>
-          </li>
-        </ul>
-      </div>
-    </header>
-    <!-- main -->
-    <main id="fullpage">
-      <!-- 首页 -->
-      <section class="overview">
-        <div class="content">
-          <div class="info">
-            <div class="photo"></div>
-            <ul class="-list">
-              <li class="-item" v-for="item in overview.infoList" v-text="item"></li>
-            </ul>
-          </div>
-          <div class="des">
-            <p class="quote" v-text="overview.quote"></p>
-            <div class="des-list">
-              <p v-for="item in overview.desList" v-text="item"></p>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- 能力 -->
-      <section class="skill">
-        <div class="content">
-          <div class="skill-circle">
-            <ul class="out">
-              <li class="item" v-style="item.bg" v-for="item in skill.outCircleList" v-text="item.name"></li>
-            </ul>
-            <ul class="inner">
-              <li class="inner-item" v-style="item.bg" v-for="item in skill.innerCircleList" v-text="item.name"></li>
-            </ul>
-          </div>
-          <div class="des" v-class="isEng?'-des-en':''">
-            <p v-for="item in skill.desList" v-text="item"></p>
-          </div>
-        </div>
-      </section>
-      <!-- 经历 -->
-      <section class="experience">
-        <div class="content">
-          <div class="slider">
-            <div class="slider-container">
-              <div class="left">
-                <div class="img" v-style="expCur.img"></div>
-                <h4 v-text="expCur.title"></h4>
-                <p class="-post">"<span v-text="expCur.post"></span>"</p>
-              </div>
-              <div class="right">
-                <p class="-time" v-text="expCur.time"></p>
-                <ul class="-list">
-                  <li class="exp-item" v-for="item in expCur.contentList" v-text="item"></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="shout-cut">
-            <ul>
-              <li v-class="$index == selectExpIndex?'-selected':''" v-for="item in exp.expList" v-on:click="switchExp($event,$index)"></li>
-            </ul>
-          </div>
-        </div>
-      </section>
-      <!-- 作品集 -->
-      <section class="work">
-        <div class="content">
-          <ul class="work-list">
-            <li class="work-list-item" v-for="item in works.worksList">
-              <div class="-title">
-                <a class="-link" v-text="item.title" v-href="item.url"></a>
-              </div>
-              <p class="-des" v-class="isEng?'-work-des-en':''" v-text="item.des"></p>
-              <div class="-qrcode" v-if="item.mini">
-                <img class="-img" v-src="item.mini" />
-                <p class="-des" v-text="isEng?'(Press in wechat)':'（微信内长按识别）'"></p>
-              </div>
-              <div class="work-link" v-if="item.url">
-                <a class="-img" v-href="item.url" target="_blank"></a>
-                <p class="-des" v-if='item.url.indexOf("quickapp")>-1' v-text="isEng?'(Android can jump)':'（安卓浏览器可跳转）'"></p>
-              </div>
-            </li>
-          </ul>
-          <div class="more">
-            <a href="https://github.com/zhaoky/demos" target="_blank" v-text="works.viewMore"></a>
-          </div>
-          <div class="switch" v-on:click="switchWork($event)">
-            <i class="left" v-style="workIndex===0?{filter:'brightness(70%)'}:{}"></i>
-            <i class="right" v-style="workIndex===works.worksList.length-1?{filter:'brightness(70%)'}:{}"></i>
-          </div>
-        </div>
-      </section>
-      <!-- 联系我 -->
-      <section class="contact">
-        <div class="content">
-          <div class="words" v-class="isEng?'words-en':'' ">
-            <span v-for="item in contact.desList1" v-text="item"></span>
-          </div>
-          <div class="idea">
-            <p v-for="item in contact.desList2" v-text="item"></p>
-          </div>
-          <!-- <div class="download">
-            <div class="title" v-text="contact.download"></div>
-            <div class="list">
-              <a v-href="item.url" target="_blank" v-for="item in contact.fileList " v-text="item.title">item.title</a>
-            </div>
-          </div> -->
-          <div class="way">
-            <a class="way-item" v-for="item in contact.typeList" v-href="item.url" target="_blank">
-              <img class="way-item-img" v-src="item.icon" alt="" />
-            </a>
-          </div>
-        </div>
-      </section>
-    </main>
-    <!-- footer -->
-    <footer v-show="pageIndex === 4">
-      <div class="github">
-        <iframe src="https://ghbtns.com/github-btn.html?user=zhaoky&repo=flqin&type=star&count=true&size=small" frameborder="0" scrolling="0"></iframe>
-        <iframe src="https://ghbtns.com/github-btn.html?user=zhaoky&repo=flqin&type=fork&count=true&size=small" frameborder="0" scrolling="0"></iframe>
-      </div>
-      <p v-for="item in footer" v-text="item"></p>
-    </footer>
-  <script>!function(e){function r(r){for(var n,f,i=r[0],l=r[1],a=r[2],c=0,s=[];c<i.length;c++)f=i[c],o[f]&&s.push(o[f][0]),o[f]=0;for(n in l)Object.prototype.hasOwnProperty.call(l,n)&&(e[n]=l[n]);for(p&&p(r);s.length;)s.shift()();return u.push.apply(u,a||[]),t()}function t(){for(var e,r=0;r<u.length;r++){for(var t=u[r],n=!0,i=1;i<t.length;i++){var l=t[i];0!==o[l]&&(n=!1)}n&&(u.splice(r--,1),e=f(f.s=t[0]))}return e}var n={},o={1:0},u=[];function f(r){if(n[r])return n[r].exports;var t=n[r]={i:r,l:!1,exports:{}};return e[r].call(t.exports,t,t.exports,f),t.l=!0,t.exports}f.m=e,f.c=n,f.d=function(e,r,t){f.o(e,r)||Object.defineProperty(e,r,{enumerable:!0,get:t})},f.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},f.t=function(e,r){if(1&r&&(e=f(e)),8&r)return e;if(4&r&&"object"==typeof e&&e&&e.__esModule)return e;var t=Object.create(null);if(f.r(t),Object.defineProperty(t,"default",{enumerable:!0,value:e}),2&r&&"string"!=typeof e)for(var n in e)f.d(t,n,function(r){return e[r]}.bind(null,n));return t},f.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return f.d(r,"a",r),r},f.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},f.p="";var i=window.webpackJsonp=window.webpackJsonp||[],l=i.push.bind(i);i.push=r,i=i.slice();for(var a=0;a<i.length;a++)r(i[a]);var p=l;t()}([]);</script><script type="text/javascript" src="js/vendors.614a7afb.js"></script><script type="text/javascript" src="js/main.fa9e047b.js"></script></body>
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/base.css" />
+	<link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" />
+	<link rel="stylesheet" type="text/css" href="css/myCss.css" />
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery.easing.1.3.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery.fullPage.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/myJs.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<div id="dowebok">
+		<!--第一屏开始-->
+		<div class="section section1">
+			<div class="spritBox1">
+				<div class="jumbotron">
+					<h1>个人简介</h1>
+				</div>
+				<table class="table table-striped table-hover">
+					<tr>
+						<td>年龄：</td>
+						<td>30</td>
+						<td>婚姻状况：</td>
+						<td>已婚</td>
+					</tr>
+					<tr>
+						<td>手机：</td>
+						<td>18085485533</td>
+						<td>邮箱：</td>
+						<td>872993425@qq.com</td>
+					</tr>
+					<tr>
+						<td>民族：</td>
+						<td>汉族</td>
+						<td>户籍：</td>
+						<td>陕西.商洛</td>
+					</tr>
+					<tr>
+						<td>目前状态：</td>
+						<td>待业</td>
+						<td>所在地：</td>
+						<td>西安</td>
+					</tr>
+				</table>
+
+			</div>
+		</div>
+		<!--第一屏结束-->
+		<!--第二屏开始-->
+		<div class="section section1">
+			<div class="spritBox">
+				<div class="page-header">
+					<h1>技术栈展示</h1>
+				</div>
+				<ul class="list-group">
+					<li class="list-group-item">熟练掌握HTML/HTML5、CSS/CSS3、JavaScript、jQuery、LESS、SCSS等前端技能</li>
+					<li class="list-group-item">熟练掌握swiper、fullpage、animate等插件使用</li>
+					<li class="list-group-item">熟悉W3C、ECMAScript、ES6等相关技术标准</li>
+					<li class="list-group-item">熟练掌握bootstrap，以及MUI、Mint UI、Element等前端开发组件</li>
+					<li class="list-group-item">熟练掌握Ajax，JSON等前端必备技能</li>
+					<li class="list-group-item">熟悉MVC、MVVM、webpack、gulp等相关工程知识</li>
+					<li class="list-group-item">熟练掌握web以及Mobile Web开发技术</li>
+					<li class="list-group-item">熟悉nodejs、git、码云，了解PHP、java</li>
+					<li class="list-group-item">熟悉mongodb、mysql数据库基本操作</li>
+					<li class="list-group-item">熟练掌握Vuejs相关技术栈，有使用Vue全家桶开发经验（技术重点）</li>
+					<li class="list-group-item">了解React全家桶基础</li>
+				</ul>
+			</div>
+		</div>
+		<!--第二屏结束-->
+		<!--第三屏开始-->
+		<div class="section section1">
+			<div class="spritBox">
+				<div class="page-header">
+					<h1>工作经历</h1>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">2017.10-2019.7</h3>
+					</div>
+					<div class="panel-body">
+						<p>所在单位：西安鼎邦网络科技有限公司</p>
+						<p>公司规模：20人以下</p>
+						<p>公司所在地：陕西.西安</p>
+						<p>主要工作：负责官网的前端页面的搭建，样式效果的展示与制作及根据产品需求完成相应的页面效果的添加和修改，以及页面的兼容性的测试和修改。并对网站的进行前端技术层面的优化和维护。</p>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">2012.09-2017.09</h3>
+					</div>
+					<div class="panel-body">
+						<p>所在单位：福泉市水务局</p>
+						<p>公司规模：50-100人</p>
+						<p>公司所在地：贵州.福泉</p>
+						<p>主要工作：在福泉市水利局局办公室工作，主要负责全局文件在OA系统上的协同办公，以及日常报表、单子档案、新闻事件的的上传工作，熟悉办公室OA系统文件分发、会签处理流程。</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--第三屏结束-->
+		<!--第四屏开始-->
+		<div class="section section1">
+			<div class="spritBox">
+				<div class="page-header">
+					<h1>项目展示（一）</h1>
+				</div>
+				<div class="row">
+					<!-- 项目一 -->
+					<div class="col-sm-6 col-md-4">
+						<div class="thumbnail">
+							<div class="caption">
+								<h3>电商后台管理系统-PC端</h3>
+								<p>技术栈：Vue全家桶</p>
+								<p>项目描述：
+									<ul class="list-group">
+										<li class="list-group-item">使用vue-cli 2.0搭建项目环境</li>
+										<li class="list-group-item">使用elementUI组件库搭建基本页面</li>
+										<li class="list-group-item">使用axios、vue-axios获取异步数据</li>
+										<li class="list-group-item">使用vue-router、全局路由卫士、addRoutes动态路由实现管理员权限控制</li>
+										<li class="list-group-item">使用vuex进行数据管理</li>
+										<li class="list-group-item">使用vuex-persistedstate插件实现数据持久化</li>
+										<li class="list-group-item">后台数据使用php+mysql搭建</li>
+									</ul>
+								</p>
+								<p>项目功能：实现登陆、权限验证、用户管理、产品管理、分类管理、角色管理，实现增删改查功能</p>
+							</div>
+						</div>
+					</div>
+					<!-- 项目二 -->
+					<div class="col-sm-6 col-md-4">
+						<div class="thumbnail">
+							<div class="caption">								
+								<h3>电商PC端项目实现</h3>
+								<p>技术栈：Vue全家桶</p>
+								<p>项目描述：
+									<ul class="list-group">
+										<li class="list-group-item">使用vue-cli 2.0搭建项目环境</li>
+										<li class="list-group-item">使用elementUI组件库搭建基本页面</li>
+										<li class="list-group-item">使用组件路由守卫实现部分页面的登录鉴权</li>
+										<li class="list-group-item">使用图片懒加载和animate动画优化页面效果</li>
+										<li class="list-group-item">使用vuex模块化管理用户、购物车组件等数据</li>
+										<li class="list-group-item">封装公共组件、公用方法优化项目</li>
+									</ul>
+								</p>
+								<p>项目功能：产品展示、分类查询、关键词搜索、商品购买、生成订单、订单支付等功能</p>
+							</div>
+						</div>
+					</div>
+					<!-- 项目三 -->
+					<div class="col-sm-6 col-md-4">
+						<div class="thumbnail">
+							<div class="caption">								
+								<h3>博客网站</h3>
+								<p>技术栈：React</p>
+								<p>项目描述：
+									<ul class="list-group">
+										<li class="list-group-item">使用react组件化技术和antd UI库进行页面基本开发</li>
+										<li class="list-group-item">使用styled-components实现样式模块化</li>
+										<li class="list-group-item">使用react-transition-group实现动画效果</li>
+										<li class="list-group-item">使用axios获取数据</li>
+										<li class="list-group-item">使用redux、redux-thunk、redux-immutable进行数据管理</li>
+										<li class="list-group-item">使用react-router-dom实现页面路由</li>
+										<li class="list-group-item">使用react-loadable实现组件异步加载</li>
+										<li class="list-group-item">使用github进行管理</li>
+									</ul>
+								</p>
+								<p>项目功能：类似简书的博客网站</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--第四屏结束-->
+		<!-- 第五屏 -->
+		<div class="section section1">
+			<div class="spritBox">
+				<div class="page-header">
+					<h1>项目展示（二）</h1>
+				</div>
+				<div class="row">
+					<!-- 项目四 -->
+					<div class="col-sm-6 col-md-4">
+						<div class="thumbnail">
+							<div class="caption">
+								<h3>微信小程序基本框架构建</h3>
+								<p>技术栈：微信小程序</p>
+								<p>项目描述：使用微信小城开发者平台实现包含新闻页、视频页、详情页等的小程序构建</p>
+								<p>项目功能：微信小程序</p>
+							</div>
+						</div>
+					</div>
+					<!-- 项目五 -->
+					<div class="col-sm-6 col-md-4">
+						<div class="thumbnail">
+							<div class="caption">
+								<h3>简单bolg页面实现</h3>
+								<p>技术栈：node、Express、mongodb</p>
+								<p>项目描述：使用node和Express框架实现简单博客发表页面</p>
+								<p>项目功能：博客发表</p>
+							</div>
+						</div>
+					</div>
+					<!-- 项目六 -->
+					<div class="col-sm-6 col-md-4">
+						<div class="thumbnail">
+							<div class="caption">
+								<h3>明星照片墙</h3>
+								<p>技术栈：php+ajax</p>
+								<p>项目描述：使用php和ajax实现点击明星照片，弹出明星详情简介的功能</p>
+								<p>项目功能：个人展示</p>
+							</div>
+						</div>
+					</div>
+					<!-- 项目七 -->
+					<div class="col-sm-6 col-md-4">
+						<div class="thumbnail">
+							<div class="caption">
+								<h3>移动端电商首页</h3>
+								<p>技术栈：Swiper</p>
+								<p>项目描述：使用Swiper实现类似京东手机版首页布局</p>
+								<p>项目功能：商城移动端展示</p>
+							</div>
+						</div>
+					</div>
+					<!-- 项目八 -->
+					<div class="col-sm-6 col-md-4">
+						<div class="thumbnail">
+							<div class="caption">
+								<h3>商城宣传页</h3>
+								<p>技术栈：FullPage</p>
+								<p>项目描述：使用FullPage插件实现商城宣传页</p>
+								<p>项目功能：商城宣传</p>
+							</div>
+						</div>
+					</div>
+					<!-- 项目九 -->
+					<div class="col-sm-6 col-md-4">
+						<div class="thumbnail">
+							<div class="caption">
+								<h3>星座运势</h3>
+								<p>技术栈：jQuery</p>
+								<p>项目描述：使用jQuery实现类似qq星座运势的页面区块</p>
+								<p>项目功能：根据你所选的星座，展示星座运势</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<p><a href="https://github.com/weblw/projectshow" class="btn btn-primary" role="button">github查看项目详情</a></p>
+			</div>
+		</div>
+	</div>
+</body>
+
 </html>
